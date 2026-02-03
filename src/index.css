@@ -1,0 +1,241 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans', 'Segoe UI Variable', 'Segoe UI', system-ui, sans-serif;
+    overflow: hidden;
+    background: #000;
+    color: #fff;
+    user-select: none;
+}
+
+/* Windows 11 Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Glassmorphism base */
+.glass {
+    background: rgba(40, 40, 40, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Window animations */
+.window-enter {
+    animation: windowOpen 0.2s ease-out forwards;
+}
+
+.window-exit {
+    animation: windowClose 0.15s ease-in forwards;
+}
+
+@keyframes windowOpen {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes windowClose {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}
+
+/* Taskbar item hover */
+.taskbar-item {
+    @apply relative flex items-center justify-center w-11 h-11 rounded-win transition-all duration-150;
+}
+
+.taskbar-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.taskbar-item:active {
+    background: rgba(255, 255, 255, 0.05);
+    transform: scale(0.95);
+}
+
+.taskbar-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 3px;
+    background: #0078D4;
+    border-radius: 2px;
+}
+
+/* ==================== MOBILE RESPONSIVENESS ==================== */
+
+/* Tablet and below - Windows on mobile auto-maximize */
+@media (max-width: 1024px) {
+
+    /* Make windows take full screen on tablets */
+    .window-container {
+        width: 100% !important;
+        height: calc(100vh - 48px) !important;
+        top: 0 !important;
+        left: 0 !important;
+        transform: none !important;
+        border-radius: 0 !important;
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 768px) {
+
+    /* Hide desktop icons on very small screens - show only welcome */
+    .desktop-icon {
+        transform: scale(0.9);
+    }
+
+    /* Adjust welcome text for mobile */
+    .welcome-container {
+        padding: 1rem !important;
+        margin: 0 1rem;
+    }
+
+    /* Start menu adjustments */
+    .start-menu {
+        width: calc(100vw - 16px) !important;
+        max-width: 480px;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+
+    /* Taskbar adjustments */
+    .taskbar-item {
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+    }
+
+    /* Further reduce icon sizes */
+    .desktop-icon {
+        transform: scale(0.85);
+    }
+
+    /* Reduce font sizes */
+    body {
+        font-size: 14px;
+    }
+
+    /* Hide non-essential taskbar items */
+    .taskbar-secondary {
+        display: none !important;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+
+    /* Larger touch targets */
+    button,
+    a,
+    .clickable {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    /* Disable hover effects that don't work on touch */
+    .hover-only {
+        display: none;
+    }
+
+    /* Make scrolling smoother on touch */
+    .overflow-auto,
+    .overflow-y-auto {
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+    }
+}
+
+/* Landscape phone optimization */
+@media (max-height: 500px) and (orientation: landscape) {
+
+    /* Reduce taskbar height */
+    .taskbar {
+        height: 40px !important;
+    }
+
+    .taskbar-item {
+        height: 36px !important;
+    }
+}
+
+/* High DPI screens */
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+
+    /* Ensure crisp icons */
+    img {
+        image-rendering: -webkit-optimize-contrast;
+    }
+}
+
+/* Print styles - in case someone wants to print the portfolio */
+@media print {
+
+    .taskbar,
+    .start-menu,
+    .context-menu {
+        display: none !important;
+    }
+
+    body {
+        background: white !important;
+        color: black !important;
+    }
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
