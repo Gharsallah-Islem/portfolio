@@ -24,9 +24,9 @@ import emailjs from '@emailjs/browser'
 // ============================================
 
 const EMAILJS_CONFIG = {
-    serviceId: 'YOUR_SERVICE_ID',      // Replace with your Service ID
-    templateId: 'YOUR_TEMPLATE_ID',    // Replace with your Template ID  
-    publicKey: 'YOUR_PUBLIC_KEY'       // Replace with your Public Key
+    serviceId: 'service_22rwyg7',      // Your Gmail Service ID
+    templateId: 'template_516ieco',    // Your Template ID  
+    publicKey: 'dBcoDQyfb1BOH1MTM'     // Your Public Key
 }
 
 export default function ContactApp() {
