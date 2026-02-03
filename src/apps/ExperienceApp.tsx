@@ -50,7 +50,7 @@ const experiences: Experience[] = [
 
 export default function ExperienceApp() {
     return (
-        <div className="h-full bg-[#1e1e1e] font-mono">
+        <div className="h-full bg-[#1e1e1e] font-mono" translate="no">
             {/* VS Code style header - Hidden on mobile */}
             <div className="hidden sm:flex items-center gap-4 px-4 py-2 bg-[#2d2d2d] border-b border-[#3d3d3d]">
                 <span className="text-xs text-white/60">File</span>
