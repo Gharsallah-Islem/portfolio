@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FaGithub, FaExternalLinkAlt, FaChevronRight, FaSearch, FaStar, FaCode, FaRocket, FaFilter, FaArrowLeft } from 'react-icons/fa'
+import { FaGithub, FaExternalLinkAlt, FaChevronRight, FaSearch, FaStar, FaCode, FaRocket, FaArrowLeft } from 'react-icons/fa'
 
 interface Project {
     id: string
